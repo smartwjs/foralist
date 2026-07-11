@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+const int P = 998244353;
+const int N=1e6+10,MOD=1e9;
+const int INF=0x3f3f3f3f3f3f3f3f;
+#define pb push_back
+#define len size()
+
+int p[N],q[N],r[N];
+
+signed main()
+{
+	int x,y,a,b,c;
+	cin>>x>>y>>a>>b>>c;
+	for(int i=0;i<a;i++)
+	{
+		cin>>p[i];
+	}
+	for(int i=0;i<b;i++)
+	{
+		cin>>q[i];
+	}
+	for(int i=0;i<c;i++)
+	{
+		cin>>r[i];
+	}
+	sort(p,p+a,greater<int>());
+	sort(q,q+b,greater<int>());
+	sort(r,r+c,greater<int>());
+	vector<int> vec;
+	for(int i=0;i<x;i++)
+	{
+		vec.push_back(p[i]);
+	}
+	for(int i=0;i<y;i++)
+	{
+		vec.push_back(q[i]);
+	}
+	vec.insert(vec.end(),r,r+c);
+	int ans=0;
+	for(int i=0;i<x+y;i++)
+	{
+		ans+=vec[i];
+	}
+	cout<<ans;
+	return 0;
+}

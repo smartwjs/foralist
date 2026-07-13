@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+const int N = 1e6 + 10, M = 1e9;
+const int INF = 0x3f3f3f3f3f;
+
+int rt[N], ct[N];
+
+signed main()
+{
+    int n, m;
+    cin >> n >> m;
+    
+    for(int i = 1; i <= m; i++)
+    {
+        int r, c;
+        cin >> r >> c;
+        rt[r] = i;
+        ct[c] = i;
+    }
+    
+    map<int, int> rc, cc;
+    for(int i = 1; i <= n; i++)
+    {
+        if(rt[i] > 0) rc[rt[i]]++;
+        if(ct[i] > 0) cc[ct[i]]++;
+    }
+    
+    int ans = 0;
+    for(auto [x,y] : rc)
+    {
+        int t = x;
+        ans += y * cc[t];
+    }
+    
+    cout << ans << endl;
+    
+    return 0;
+}
